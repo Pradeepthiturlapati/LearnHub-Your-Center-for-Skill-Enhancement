@@ -1,0 +1,1 @@
+:LearnHub is a modern, minimalist digital learning platform that enables students to enroll in courses, track progress, and receive certificates, while teachers and admins can manage courses and users.
