@@ -1,0 +1,386 @@
+:root {
+  --primary-blue: #2563EB;
+  --primary-blue-dark: #c2ceea;
+  --background-white: #FFFFFF;
+  --text-charcoal: #111827;
+  --text-gray: #6B7280;
+  --text-gray-light: #9CA3AF;
+  --text-gray-dark: #374151;
+  --accent-gold: #FACC15;
+  --border-light: #F3F4F6;
+  --border-medium: #E5E7EB;
+  --success-green: #10B981;
+  --error-red: #EF4444;
+  --warning-orange: #F59E0B;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-secondary: 'Poppins', 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--background-white);
+  color: var(--text-charcoal);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-white);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Material-UI Overrides */
+.MuiTypography-root {
+  font-family: var(--font-primary) !important;
+  color: var(--text-charcoal) !important;
+}
+
+.MuiButton-root {
+  font-family: var(--font-secondary) !important;
+  text-transform: none !important;
+  border-radius: var(--radius-full) !important;
+}
+
+.MuiPaper-root {
+  background-color: var(--background-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.MuiCard-root {
+  background-color: var(--background-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-medium) !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root:hover {
+  border-color: var(--primary-blue) !important;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused {
+  border-color: var(--primary-blue) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+.MuiInputLabel-root {
+  color: var(--text-gray) !important;
+  font-weight: 500 !important;
+}
+
+.MuiInputLabel-root.Mui-focused {
+  color: var(--primary-blue) !important;
+}
+
+.MuiInputBase-input {
+  color: var(--text-charcoal) !important;
+  font-weight: 500 !important;
+}
+
+.MuiInputBase-input::placeholder {
+  color: var(--text-gray-light) !important;
+  opacity: 1 !important;
+}
+
+/* Fix for aria-hidden accessibility issue */
+.MuiSelect-select:focus {
+  outline: none !important;
+}
+
+.MuiSelect-select[aria-expanded="true"] {
+  background-color: rgba(37, 99, 235, 0.04) !important;
+}
+
+/* Ensure proper focus management for Select components */
+.MuiSelect-root:focus-within .MuiOutlinedInput-notchedOutline {
+  border-color: var(--primary-blue) !important;
+  border-width: 2px !important;
+}
+
+/* Prevent aria-hidden conflicts */
+[aria-hidden="true"]:has(:focus) {
+  aria-hidden: false !important;
+}
+
+/* Alternative approach for aria-hidden fix */
+.MuiPopover-root[role="presentation"] {
+  z-index: 1300 !important;
+}
+
+.MuiMenu-root .MuiPaper-root {
+  aria-hidden: false !important;
+}
+
+/* Consistent Button Styling */
+.btn-primary, .MuiButton-contained {
+  background-color: var(--primary-blue) !important;
+  color: var(--background-white) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-full) !important;
+  text-transform: none !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover, .MuiButton-contained:hover {
+  background-color: var(--primary-blue-dark) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+.btn-secondary, .MuiButton-outlined {
+  background-color: transparent !important;
+  color: var(--primary-blue) !important;
+  border: 2px solid var(--primary-blue) !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-full) !important;
+  text-transform: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-secondary:hover, .MuiButton-outlined:hover {
+  background-color: rgba(37, 99, 235, 0.05) !important;
+  border-color: var(--primary-blue-dark) !important;
+  color: var(--primary-blue-dark) !important;
+}
+
+/* Card Styling */
+.course-card, .card-premium {
+  background-color: var(--background-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: all 0.2s ease !important;
+}
+
+.course-card:hover, .card-premium:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-xl) !important;
+  border-color: var(--primary-blue) !important;
+}
+
+/* Form Styling */
+.form-premium {
+  background-color: var(--background-white) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Navigation Styling */
+.navbar-premium {
+  background-color: var(--background-white) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* Footer Styling */
+.footer-premium {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--primary-blue) 50%, transparent 100%);
+  opacity: 0.3;
+}
+
+.footer-premium a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-premium a:hover {
+  color: var(--primary-blue) !important;
+  transform: translateX(2px);
+}
+
+.footer-premium .MuiTypography-root {
+  font-family: var(--font-primary) !important;
+}
+
+.footer-premium .MuiButton-root {
+  font-family: var(--font-secondary) !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.footer-premium .MuiButton-root:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-premium {
+    text-align: center;
+  }
+  
+  .footer-premium .MuiBox-root {
+    padding: 2rem 1rem !important;
+  }
+}
+
+/* Prevent horizontal scrolling */
+body {
+  overflow-x: hidden;
+}
+
+.App {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Consistent Color Usage */
+.text-primary { color: var(--primary-blue) !important; }
+.text-secondary { color: var(--text-gray) !important; }
+.text-muted { color: var(--text-gray-light) !important; }
+.bg-primary { background-color: var(--primary-blue) !important; }
+.bg-secondary { background-color: var(--background-white) !important; }
+.bg-light { background-color: var(--border-light) !important; }
+
+/* Shimmer Animation for Course Cards */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Course Card Enhancements */
+.course-thumbnail {
+  transition: transform 0.3s ease;
+}
+
+.course-overlay {
+  transition: opacity 0.3s ease;
+}
+
+/* Enhanced Card Hover Effects */
+.course-card-enhanced {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.course-card-enhanced:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Gradient Text Effects */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced Button Styles */
+.btn-gradient {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  transition: all 0.2s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Badge Styles */
+.badge-premium {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+/* Enhanced Typography */
+.text-shadow {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Glass Morphism Effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  color: white;
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: var(--font-secondary);
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-primary);
+}
+
+.hero-section .btn-gradient {
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
